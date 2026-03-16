@@ -1,0 +1,1715 @@
+/* ============================================================
+   GLAMOUR NAILS STUDIO — Hoja de Estilos Principal
+   ============================================================
+   
+   CÓMO CAMBIAR COLORES:
+   ─────────────────────
+   Todos los colores están definidos como variables CSS en :root.
+   Solo cambia los valores en esta sección para personalizar toda la paleta.
+   
+   CÓMO CAMBIAR TIPOGRAFÍAS:
+   ─────────────────────────
+   Las fuentes están definidas como variables --font-heading y --font-body.
+   Cambia el nombre de la fuente aquí Y en el <link> de Google Fonts en index.html.
+   
+============================================================ */
+
+/* ============================================================
+   VARIABLES CSS — PALETA DE COLORES Y TIPOGRAFÍAS
+   ─────────────────────────────────────────────────
+   Modifica estos valores para cambiar TODA la apariencia del sitio.
+============================================================ */
+:root {
+    /* ── Colores principales ── */
+    --color-primary: #e8a0bf;        /* Rosa principal suave */
+    --color-primary-light: #f5d5e5;  /* Rosa claro */
+    --color-primary-dark: #c77da3;   /* Rosa oscuro */
+    --color-primary-ultra-light: #fef0f5; /* Rosa casi blanco */
+    
+    /* ── Dorados ── */
+    --color-gold: #c9a96e;           /* Dorado principal */
+    --color-gold-light: #e8d5a3;     /* Dorado claro */
+    --color-gold-dark: #a68945;      /* Dorado oscuro */
+    
+    /* ── Neutros ── */
+    --color-white: #ffffff;
+    --color-bg: #fffaf8;             /* Fondo general cálido */
+    --color-bg-alt: #fdf2ee;         /* Fondo alternativo */
+    --color-text: #4a3642;           /* Texto principal oscuro */
+    --color-text-light: #8a7580;     /* Texto secundario */
+    --color-text-muted: #bba8b3;     /* Texto sutil */
+    --color-border: #f0e0e8;         /* Bordes sutiles */
+    
+    /* ══════════════════════════════════════════════════════════
+       GRADIENTES DE FONDO — CURVAS Y CAPAS PREMIUM
+       ──────────────────────────────────────────────────────────
+       Cambia estos gradientes para personalizar los fondos.
+       Cada variable controla una sección diferente del sitio.
+       Formato: linear-gradient(dirección, color-inicio, color-fin)
+       
+       CÓMO CAMBIAR:
+       • Cambia los colores rgba() para modificar tonos
+       • Cambia el ángulo (135deg, 180deg, etc.) para la dirección
+       • Ajusta los % para mover los puntos de transición
+    ══════════════════════════════════════════════════════════ */
+    --gradient-body: linear-gradient(180deg, #fffaf8 0%, #fef0f5 30%, #fff5f0 60%, #fef0f5 100%);
+    --gradient-services: linear-gradient(160deg, #fff7f5 0%, #fef0f5 25%, #fce4ec 50%, #fef6f0 75%, #fffaf8 100%);
+    --gradient-gallery: linear-gradient(160deg, #fef0f5 0%, #fce4ec 30%, #f8e8d6 60%, #fef0f5 100%);
+    --gradient-contact: linear-gradient(160deg, #fffaf8 0%, #fef0f5 40%, #fce4ec 70%, #fff5f0 100%);
+    
+    /* Color de las curvas decorativas — cambia para ajustar el tono */
+    --curve-color-1: rgba(232, 160, 191, 0.12);  /* Rosa suave para curvas */
+    --curve-color-2: rgba(201, 169, 110, 0.08);  /* Dorado suave para curvas */
+    --curve-color-3: rgba(245, 213, 229, 0.2);   /* Rosa claro para capas */
+    --curve-color-4: rgba(252, 228, 236, 0.25);  /* Rosa medio para capas */
+    
+    /* ── Efectos ── */
+    --color-overlay: rgba(74, 54, 66, 0.55); /* Overlay oscuro sobre imágenes */
+    --color-shadow: rgba(200, 160, 180, 0.15); /* Sombras rosadas sutiles */
+    --color-shadow-strong: rgba(200, 160, 180, 0.3);
+    --color-glass: rgba(255, 255, 255, 0.85); /* Efecto glassmorphism */
+    
+    /* ── Tipografías ── */
+    --font-heading: 'Playfair Display', Georgia, serif;  /* Títulos elegantes */
+    --font-body: 'Raleway', 'Segoe UI', sans-serif;     /* Cuerpo del texto */
+    
+    /* ── Tamaños de fuente ── */
+    --fs-hero: clamp(2.5rem, 6vw, 5rem);
+    --fs-h2: clamp(1.8rem, 4vw, 3rem);
+    --fs-h3: clamp(1.2rem, 2.5vw, 1.5rem);
+    --fs-body: 1rem;
+    --fs-small: 0.875rem;
+    --fs-xs: 0.75rem;
+    
+    /* ── Espaciado ── */
+    --section-padding: clamp(4rem, 8vw, 7rem);
+    --container-width: 1200px;
+    --border-radius: 16px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 24px;
+    
+    /* ── Transiciones ── */
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   RESET Y ESTILOS BASE
+============================================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    color: var(--color-text);
+    /* ── FONDO DEL BODY: gradiente suave vertical rosa/blanco ── 
+       Cambia --gradient-body en :root para modificar */
+    background: var(--gradient-body);
+    background-attachment: fixed; /* El gradiente se fija al scroll */
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ============================================================
+   1. NAVBAR
+   ─────────────────────────────────────────────────────────────
+   Navbar fijo con efecto de cambio al scroll.
+   El efecto "scrolled" se agrega via JavaScript.
+============================================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 0;
+    transition: var(--transition-slow);
+    background: transparent;
+}
+
+/* Estado al hacer scroll — se agrega la clase .scrolled via JS */
+.navbar.scrolled {
+    background: var(--color-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.6rem 0;
+    box-shadow: 0 4px 30px var(--color-shadow);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+    color: var(--color-gold);
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.7; transform: scale(1.1) rotate(15deg); }
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.5px;
+}
+
+.navbar:not(.scrolled) .logo-text {
+    color: var(--color-white);
+}
+
+.logo-sub {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    align-self: flex-end;
+    margin-bottom: 2px;
+}
+
+/* Menú de navegación */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-white);
+    position: relative;
+    padding: 0.3rem 0;
+}
+
+.navbar.scrolled .nav-link {
+    color: var(--color-text);
+}
+
+/* Efecto underline animado en los links */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-gold));
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--color-gold);
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Botón hamburguesa (móvil) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 28px;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.navbar.scrolled .hamburger-line {
+    background: var(--color-text);
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================================================
+   2. HERO / CARRUSEL
+============================================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 8s ease-out;
+}
+
+.carousel-slide.active img {
+    transform: scale(1);
+}
+
+/* Overlay sobre las imágenes del carrusel */
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(74, 54, 66, 0.65) 0%,
+        rgba(201, 169, 110, 0.25) 50%,
+        rgba(232, 160, 191, 0.45) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Texto del hero */
+.hero-content {
+    text-align: center;
+    color: var(--color-white);
+    padding: 2rem;
+    animation: heroFadeIn 1.2s ease-out;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--color-gold-light);
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-hero);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-description {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+}
+
+.hero-btn:hover::before {
+    left: 100%;
+}
+
+.hero-btn:hover {
+    background: transparent;
+    border-color: var(--color-gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+}
+
+/* Botones del carrusel (flechas) */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.carousel:hover .carousel-btn {
+    opacity: 1;
+}
+
+.carousel-btn:hover {
+    background: var(--color-gold);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-prev {
+    left: 1.5rem;
+}
+
+.carousel-next {
+    right: 1.5rem;
+}
+
+/* Puntos indicadores del carrusel */
+.carousel-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 3;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(201, 169, 110, 0.6);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+/* ============================================================
+   ENCABEZADOS DE SECCIÓN (reutilizable)
+============================================================ */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(232, 160, 191, 0.1));
+    padding: 0.4rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-gold-light);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-text-light);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Adorno decorativo bajo el título */
+.title-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.ornament-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.ornament-diamond {
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    animation: rotateDiamond 6s ease-in-out infinite;
+}
+
+@keyframes rotateDiamond {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* ============================================================
+   3. SECCIÓN DE SERVICIOS
+   ─────────────────────────────────────────────────────────────
+   FONDO CON GRADIENTES Y CURVAS:
+   • El gradiente de fondo se controla con --gradient-services
+   • Las curvas usan ::before y ::after con clip-path
+   • Cambia los colores de curva con --curve-color-1/2/3/4
+   • Cambia la forma de las curvas editando los valores de
+     clip-path (son puntos de un polígono con curvas Bézier)
+============================================================ */
+.services-section {
+    padding: var(--section-padding) 0;
+    /* ── Gradiente de fondo de servicios ──
+       Cambia --gradient-services en :root para modificar */
+    background: var(--gradient-services);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Curva decorativa superior (ola suave) ──
+   clip-path: dibuja una forma curva en la parte superior.
+   Cambia los valores de 'curve()' o 'Q' para ajustar la curvatura.
+   Cambia --curve-color-3 para el color de esta capa. */
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, var(--curve-color-3), var(--curve-color-4));
+    clip-path: ellipse(75% 100% at 50% 0%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Curva decorativa inferior + esferas de fondo ──
+   Combina una curva inferior con esferas radiales para profundidad */
+.services-section::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Esfera rosa esquina izquierda */
+        radial-gradient(ellipse at 5% 85%, var(--curve-color-1) 0%, transparent 40%),
+        /* Esfera dorada esquina derecha */
+        radial-gradient(ellipse at 95% 15%, var(--curve-color-2) 0%, transparent 35%),
+        /* Esfera rosa central inferior */
+        radial-gradient(ellipse at 50% 95%, var(--curve-color-3) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Cards de categoría de servicio */
+.service-category {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Línea decorativa superior de cada card */
+.service-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-gold), var(--color-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition-slow);
+}
+
+.service-category:hover::before {
+    transform: scaleX(1);
+}
+
+.service-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px var(--color-shadow-strong);
+    border-color: var(--color-primary-light);
+}
+
+/* Resplandor sutil al hover */
+.service-category::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition-slow);
+    pointer-events: none;
+}
+
+.service-category:hover::after {
+    opacity: 1;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.category-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Lista de servicios */
+.service-list {
+    margin-bottom: 1.5rem;
+}
+
+.service-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--color-border);
+    transition: var(--transition);
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+.service-item:hover {
+    padding-left: 0.5rem;
+    background: var(--color-primary-ultra-light);
+    border-radius: var(--border-radius-sm);
+}
+
+.service-name {
+    font-size: var(--fs-body);
+    font-weight: 400;
+    color: var(--color-text);
+    /* Se quitó white-space: nowrap para permitir que textos largos bajen de línea */
+    line-height: 1.4;
+    max-width: 65%; /* Asegura que deje espacio para los puntos y precio */
+}
+
+.service-dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--color-text-muted);
+    min-width: 20px;
+    margin-bottom: 4px;
+}
+
+.service-price {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-gold-dark);
+    white-space: nowrap;
+}
+
+/* Botón agendar por WhatsApp */
+.btn-agendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: var(--color-white);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-agendar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-agendar:hover::before {
+    left: 100%;
+}
+
+.btn-agendar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+}
+
+.btn-icon {
+    font-size: 1.1rem;
+}
+
+/* ============================================================
+   4. GALERÍA
+   ─────────────────────────────────────────────────────────────
+   FONDO CON GRADIENTE Y CURVAS:
+   • El gradiente se controla con --gradient-gallery
+   • Curva superior suave separa visualmente de la sección anterior
+   • Cambia clip-path para modificar la forma de la curva
+============================================================ */
+.gallery-section {
+    padding: var(--section-padding) 0;
+    padding-top: calc(var(--section-padding) + 40px); /* Compensa la curva superior */
+    /* ── Gradiente de fondo de galería ──
+       Cambia --gradient-gallery en :root para modificar */
+    background: var(--gradient-gallery);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Curva decorativa superior de la galería ──
+   Crea una ola invertida que se superpone suavemente.
+   Cambia ellipse() para ajustar la curvatura.
+   Cambia el gradiente para otros tonos. */
+.gallery-section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 247, 245, 0.9),
+        rgba(254, 240, 245, 0.8),
+        rgba(248, 232, 214, 0.6)
+    );
+    clip-path: ellipse(70% 100% at 50% 0%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Decoración de fondo: esferas suaves para dar profundidad ── */
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 85% 20%, var(--curve-color-1) 0%, transparent 35%),
+        radial-gradient(ellipse at 15% 75%, var(--curve-color-2) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 50%, rgba(252, 228, 236, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    position: relative;
+    z-index: 1; /* Por encima de las decoraciones de fondo */
+}
+
+/* Cada item de la galería */
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    background: var(--color-primary-light);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+/* Overlay al hacer hover */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(232, 160, 191, 0.4),
+        rgba(201, 169, 110, 0.3)
+    );
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+/* Icono de zoom al hover */
+.gallery-item::after {
+    content: '⊕';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    font-size: 2.5rem;
+    color: var(--color-white);
+    opacity: 0;
+    transition: var(--transition-bounce);
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.12);
+}
+
+/* Animación de entrada escalonada */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: galleryFadeIn 0.6s ease-out forwards;
+}
+
+@keyframes galleryFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   LIGHTBOX (Modal de imagen)
+============================================================ */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 10, 15, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: var(--transition-slow);
+}
+
+.lightbox.active .lightbox-content img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    cursor: pointer;
+    z-index: 2001;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    background: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    transition: var(--transition);
+    z-index: 2001;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--color-gold);
+}
+
+.lightbox-prev svg,
+.lightbox-next svg {
+    width: 24px;
+    height: 24px;
+}
+
+.lightbox-prev {
+    left: 1.5rem;
+}
+
+.lightbox-next {
+    right: 1.5rem;
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-small);
+    letter-spacing: 2px;
+}
+
+/* ============================================================
+   5. SECCIÓN DE CONTACTO
+   ─────────────────────────────────────────────────────────────
+   FONDO CON GRADIENTE, CURVAS Y ESFERAS:
+   • Gradiente controlado con --gradient-contact
+   • Curva suave superior + esferas de color para profundidad
+   • Las capas crean un efecto de profundidad premium
+============================================================ */
+.contact-section {
+    padding: var(--section-padding) 0;
+    padding-top: calc(var(--section-padding) + 40px);
+    /* ── Gradiente de fondo de contacto ──
+       Cambia --gradient-contact en :root para modificar */
+    background: var(--gradient-contact);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Curva decorativa superior de contacto ──
+   Forma de ola asimétrica para un estilo más orgánico.
+   polygon() define los puntos de la forma (x% y%).
+   Curvas Bézier se simulan con clip-path ellipse. */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(
+        90deg,
+        rgba(254, 240, 245, 0.8),
+        rgba(252, 228, 236, 0.6),
+        rgba(248, 232, 214, 0.5)
+    );
+    clip-path: ellipse(65% 100% at 45% 0%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Esferas decorativas de fondo para profundidad ── */
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Esfera rosa grande esquina superior derecha */
+        radial-gradient(circle at 90% 10%, var(--curve-color-3) 0%, transparent 30%),
+        /* Esfera dorada sutil esquina inferior izquierda */
+        radial-gradient(circle at 10% 90%, var(--curve-color-2) 0%, transparent 25%),
+        /* Halo central suave */
+        radial-gradient(ellipse at 50% 60%, rgba(232, 160, 191, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+    position: relative;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--color-shadow);
+    border-color: var(--color-primary-light);
+}
+
+.contact-card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.2rem;
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-ultra-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.contact-card:hover .contact-card-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-gold));
+    transform: scale(1.1);
+}
+
+.contact-card-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-primary-dark);
+    transition: var(--transition);
+}
+
+.contact-card:hover .contact-card-icon svg {
+    stroke: var(--color-white);
+}
+
+.contact-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.8rem;
+}
+
+.contact-card-text {
+    font-size: var(--fs-body);
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+
+.contact-card-text a {
+    color: var(--color-primary-dark);
+    font-weight: 500;
+}
+
+.contact-card-text a:hover {
+    color: var(--color-gold);
+}
+
+/* Redes sociales en tarjeta de contacto */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary-ultra-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    transition: var(--transition-bounce);
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-primary-dark);
+    fill: none;
+    transition: var(--transition);
+}
+
+.social-link svg[fill="currentColor"] {
+    fill: var(--color-primary-dark);
+    stroke: none;
+}
+
+.social-link:hover {
+    transform: translateY(-4px) scale(1.1);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-gold));
+    border-color: transparent;
+    box-shadow: 0 8px 20px var(--color-shadow-strong);
+}
+
+.social-link:hover svg {
+    stroke: var(--color-white);
+}
+
+.social-link:hover svg[fill="currentColor"] {
+    fill: var(--color-white);
+}
+
+/* ============================================================
+   6. FOOTER
+   ─────────────────────────────────────────────────────────────
+   FONDO CON GRADIENTE OSCURO PREMIUM:
+   • Gradiente de tres tonos oscuros con toque rosado
+   • Curva superior que conecta suavemente con la sección anterior
+   • Cambia los colores para ajustar el tono del footer
+============================================================ */
+.footer {
+    /* ── Gradiente oscuro del footer ──
+       Combina tonos oscuros con un sutil toque rosa/dorado.
+       Cambia estos colores para modificar el aspecto del footer. */
+    background: linear-gradient(
+        135deg,
+        #3d2a34 0%,     /* Marrón rosado oscuro - CAMBIA ESTE */
+        #2d1f27 40%,    /* Marrón muy oscuro - CAMBIA ESTE */
+        #4a3642 70%,    /* Marrón con toque rosa - CAMBIA ESTE */
+        #2d1f27 100%    /* Marrón final - CAMBIA ESTE */
+    );
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 0 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Curva decorativa superior del footer ──
+   Crea una transición suave entre la sección anterior y el footer. */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(
+        180deg,
+        rgba(254, 240, 245, 0.15),
+        transparent
+    );
+    clip-path: ellipse(80% 100% at 50% 0%);
+    pointer-events: none;
+}
+
+/* ── Esferas sutiles internas del footer ── */
+.footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(232, 160, 191, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(201, 169, 110, 0.04) 0%, transparent 35%);
+    pointer-events: none;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.footer-logo .logo-text {
+    color: var(--color-white);
+    font-size: 1.3rem;
+}
+
+.footer-tagline {
+    font-size: var(--fs-small);
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    padding-left: 1.8rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    font-size: var(--fs-small);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-social a svg {
+    width: 18px;
+    height: 18px;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: var(--transition);
+}
+
+.footer-social a svg[fill="currentColor"] {
+    fill: rgba(255, 255, 255, 0.6);
+    stroke: none;
+}
+
+.footer-social a:hover {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    transform: translateY(-3px);
+}
+
+.footer-social a:hover svg {
+    stroke: var(--color-white);
+}
+
+.footer-social a:hover svg[fill="currentColor"] {
+    fill: var(--color-white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   7. BOTÓN FLOTANTE DE WHATSAPP
+============================================================ */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 900;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: var(--transition-bounce);
+    animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6),
+                    0 0 0 10px rgba(37, 211, 102, 0.1),
+                    0 0 0 20px rgba(37, 211, 102, 0.05);
+    }
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    fill: var(--color-white);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    animation: none;
+}
+
+/* Tooltip al hover */
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--color-text);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--color-text);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* ============================================================
+   8. RESPONSIVE DESIGN
+   ─────────────────────────────────────────────────────────────
+   Puntos de quiebre:
+   - 992px: Tablets landscape
+   - 768px: Tablets portrait
+   - 576px: Móviles
+============================================================ */
+
+/* ── Tablets ── */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* ── Tablets y móviles ── */
+@media (max-width: 768px) {
+    /* Hamburguesa visible */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menú móvil - panel deslizante */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 350px;
+        height: 100vh;
+        background: linear-gradient(180deg, var(--color-white) 0%, var(--color-primary-ultra-light) 100%);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        padding: 2rem;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+        transition: var(--transition-slow);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        color: var(--color-text) !important;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+
+    /* Services */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-name {
+        white-space: normal;
+        font-size: var(--fs-small);
+    }
+
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-tagline {
+        padding-left: 0;
+    }
+
+    /* Carousel buttons */
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+    }
+
+    .carousel-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ── Móviles pequeños ── */
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+
+    .service-category {
+        padding: 1.5rem;
+    }
+
+    .carousel-prev {
+        left: 0.8rem;
+    }
+
+    .carousel-next {
+        right: 0.8rem;
+    }
+
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 1.2rem;
+        right: 1.2rem;
+    }
+
+    .whatsapp-float svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .whatsapp-tooltip {
+        display: none;
+    }
+
+    /* Lightbox responsive */
+    .lightbox-prev {
+        left: 0.5rem;
+    }
+
+    .lightbox-next {
+        right: 0.5rem;
+    }
+
+    .lightbox-close {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+}
+
+/* ============================================================
+   ANIMACIONES PARA SCROLL (se activan via JS con clase .animate-in)
+============================================================ */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variantes de animación */
+.animate-on-scroll.fade-left {
+    transform: translateX(-40px);
+}
+
+.animate-on-scroll.fade-left.animate-in {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.fade-right {
+    transform: translateX(40px);
+}
+
+.animate-on-scroll.fade-right.animate-in {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.scale-up {
+    transform: scale(0.9);
+}
+
+.animate-on-scroll.scale-up.animate-in {
+    transform: scale(1);
+}

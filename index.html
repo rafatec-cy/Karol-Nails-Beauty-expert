@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Salón de uñas profesional - Servicios de manicura, pedicura, uñas acrílicas, polygel, semipermanente y más. Agenda tu cita por WhatsApp.">
+    <meta name="keywords" content="salón de uñas, manicura, pedicura, uñas acrílicas, polygel, nail art, semipermanente">
+    <meta name="author" content="Glamour Nails Studio">
+
+    <!-- ============================================================
+         TÍTULO DEL SITIO
+         Cambia el texto entre <title> para personalizar el nombre
+         que aparece en la pestaña del navegador.
+    ============================================================ -->
+    <title>Glamour Nails Studio | Salón de Uñas Profesional</title>
+
+    <!-- ============================================================
+         FAVICON
+         Reemplaza el archivo favicon.ico en la carpeta raíz
+         para cambiar el icono de la pestaña del navegador.
+    ============================================================ -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Google Fonts - Tipografías elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         1. HEADER / NAVBAR
+         ─────────────────────────────────────────────────────────────
+         • Cambia el nombre del salón en el <a class="logo">
+         • Edita los enlaces del menú según tus secciones
+         • El navbar se vuelve compacto al hacer scroll (ver script.js)
+    ============================================================ -->
+    <header id="navbar" class="navbar">
+        <div class="navbar-container">
+            <!-- LOGO / NOMBRE DEL SALÓN — Cambia el texto aquí -->
+            <a href="#inicio" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Glamour Nails</span>
+                <span class="logo-sub">Studio</span>
+            </a>
+
+            <!-- MENÚ DE NAVEGACIÓN — Agrega o quita enlaces según necesites -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#galeria" class="nav-link">Galería</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+
+            <!-- Botón hamburguesa para móvil -->
+            <button class="hamburger" id="hamburger" aria-label="Menú de navegación">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         2. HERO / CARRUSEL
+         ─────────────────────────────────────────────────────────────
+         • Las imágenes se cargan desde la carpeta "carrucel/"
+         • Para agregar/quitar imágenes: edita el array 'carouselImages'
+           en script.js (busca la sección "CONFIGURACIÓN DEL CARRUSEL")
+         • El carrusel cambia automáticamente cada 4 segundos
+         • Tiene flechas y puntos indicadores
+    ============================================================ -->
+    <section id="inicio" class="hero">
+        <div class="carousel" id="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <!-- Las slides se generan dinámicamente desde script.js -->
+            </div>
+
+            <!-- Overlay con texto sobre el carrusel -->
+            <div class="carousel-overlay">
+                <div class="hero-content">
+                    <!-- TEXTO DEL HERO — Personaliza estos textos -->
+                    <p class="hero-subtitle">Bienvenida a</p>
+                    <h1 class="hero-title">Glamour Nails Studio</h1>
+                    <p class="hero-description">Donde la elegancia se encuentra en cada detalle</p>
+                    <a href="#servicios" class="hero-btn">Ver Servicios</a>
+                </div>
+            </div>
+
+            <!-- Controles del carrusel -->
+            <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Puntos indicadores -->
+            <div class="carousel-dots" id="carouselDots">
+                <!-- Los dots se generan dinámicamente desde script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         3. SECCIÓN DE SERVICIOS
+         ─────────────────────────────────────────────────────────────
+         • Cada categoría tiene su propio bloque con un icono y color
+         • Para AGREGAR un servicio: copia un <li> dentro del <ul>
+         • Para QUITAR un servicio: elimina el <li> correspondiente
+         • Para AGREGAR una categoría: copia un bloque <div class="service-category">
+         • El botón "Agendar por WhatsApp" usa el número definido en script.js
+         • Cambia los precios editando el texto directamente
+    ============================================================ -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Tratamientos Exclusivos</h2>
+                <p class="section-description">Descubre nuestra carta de servicios diseñados para realzar tu belleza</p>
+                <div class="title-ornament">
+                    <span class="ornament-line"></span>
+                    <span class="ornament-diamond">◇</span>
+                    <span class="ornament-line"></span>
+                </div>
+            </div>
+
+            <div class="services-grid">
+
+                <!-- ═══════════════════════════════════════════
+                     CATEGORÍA 1: Sistemas y Extensiones
+                     Para agregar un servicio, copia un <li> dentro del <ul>
+                ═══════════════════════════════════════════ -->
+                <div class="service-category" data-category="extensiones">
+                    <div class="category-header">
+                        <span class="category-icon">💎</span>
+                        <h3 class="category-title">Sistemas y Extensiones</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-name">Uñas acrílicas esculpidas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$155.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Uñas en polygel</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$165.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Uñas híbridas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$135.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Sistema soft gel</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$110.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Baño en acrílico</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$110.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Baño en polygel</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$115.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Alargamiento de uñas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$15.000 c/u</span>
+                        </li>
+                    </ul>
+                    <!-- Botón de agendar — El número de WhatsApp se configura en script.js -->
+                    <a href="#" class="btn-agendar" data-service="Sistemas y Extensiones">
+                        <span class="btn-icon">📱</span> Agendar por WhatsApp
+                    </a>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     CATEGORÍA 2: Semipermanente y Bases
+                ═══════════════════════════════════════════ -->
+                <div class="service-category" data-category="semipermanente">
+                    <div class="category-header">
+                        <span class="category-icon">✨</span>
+                        <h3 class="category-title">Semipermanente y Bases</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-name">Semipermanente</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$60.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Base Rubber</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$75.000</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-agendar" data-service="Semipermanente y Bases">
+                        <span class="btn-icon">📱</span> Agendar por WhatsApp
+                    </a>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     CATEGORÍA 3: Manicura y Pedicura
+                ═══════════════════════════════════════════ -->
+                <div class="service-category" data-category="manicura">
+                    <div class="category-header">
+                        <span class="category-icon">🧼</span>
+                        <h3 class="category-title">Manicura y Pedicura</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-name">Manicura tradicional secado rápido</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$25.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Pedicura tradicional</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$35.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Pedicura semipermanente</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$65.000</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-agendar" data-service="Manicura y Pedicura">
+                        <span class="btn-icon">📱</span> Agendar por WhatsApp
+                    </a>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     CATEGORÍA 4: Mantenimientos y Retiros
+                ═══════════════════════════════════════════ -->
+                <div class="service-category" data-category="mantenimiento">
+                    <div class="category-header">
+                        <span class="category-icon">🔧</span>
+                        <h3 class="category-title">Mantenimientos y Retiros</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-name">Mantenimiento en Polygel o acrílico desde</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$95.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Retiro de sistemas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$25.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Retiro de semipermanente</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$15.000</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-agendar" data-service="Mantenimientos y Retiros">
+                        <span class="btn-icon">📱</span> Agendar por WhatsApp
+                    </a>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     CATEGORÍA 5: Cejas
+                ═══════════════════════════════════════════ -->
+                <div class="service-category" data-category="cejas">
+                    <div class="category-header">
+                        <span class="category-icon">👁️</span>
+                        <h3 class="category-title">Cejas</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-name">Depilación de cejas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$17.000</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-name">Laminado de cejas</span>
+                            <span class="service-dots"></span>
+                            <span class="service-price">$70.000</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-agendar" data-service="Cejas">
+                        <span class="btn-icon">📱</span> Agendar por WhatsApp
+                    </a>
+                </div>
+
+            </div> <!-- /services-grid -->
+        </div> <!-- /container -->
+    </section>
+
+    <!-- ============================================================
+         4. GALERÍA ESTILO INSTAGRAM
+         ─────────────────────────────────────────────────────────────
+         • Las imágenes se cargan desde la carpeta "imagenes/"
+         • Para agregar/quitar imágenes: edita el array 'galleryImages'
+           en script.js (busca la sección "CONFIGURACIÓN DE LA GALERÍA")
+         • Click en imagen → abre lightbox
+         • Hover → efecto zoom
+    ============================================================ -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestro Trabajo</span>
+                <h2 class="section-title">Galería de Diseños</h2>
+                <p class="section-description">Inspírate con nuestros diseños más recientes y agenda tu cita</p>
+                <div class="title-ornament">
+                    <span class="ornament-line"></span>
+                    <span class="ornament-diamond">◇</span>
+                    <span class="ornament-line"></span>
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Las imágenes se generan dinámicamente desde script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         LIGHTBOX (Modal para ver imágenes en grande)
+         Se activa al hacer click en una imagen de la galería
+    ============================================================ -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="lightbox-next" id="lightboxNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Imagen ampliada">
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ============================================================
+         5. SECCIÓN DE CONTACTO
+         ─────────────────────────────────────────────────────────────
+         • Cambia la dirección, teléfono y horario directamente
+         • Los enlaces de redes se editan abajo (href de cada <a>)
+    ============================================================ -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Encuéntranos</span>
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-description">Estamos aquí para atenderte y hacer realidad el diseño de tus sueños</p>
+                <div class="title-ornament">
+                    <span class="ornament-line"></span>
+                    <span class="ornament-diamond">◇</span>
+                    <span class="ornament-line"></span>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+
+                <!-- Tarjeta: Ubicación -->
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="contact-card-title">Ubicación</h3>
+                    <!-- DIRECCIÓN — Cambia este texto -->
+                    <p class="contact-card-text">Calle 123 #45-67, Local 201<br>Ciudad, Colombia</p>
+                </div>
+
+                <!-- Tarjeta: Teléfono / WhatsApp -->
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="contact-card-title">Teléfono</h3>
+                    <!-- TELÉFONO — Cambia ambos: el texto visible y el href del link -->
+                    <p class="contact-card-text">
+                        <a href="tel:+573001234567">+57 300 123 4567</a>
+                    </p>
+                </div>
+
+                <!-- Tarjeta: Horario -->
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="contact-card-title">Horario</h3>
+                    <!-- HORARIO — Cambia estos textos -->
+                    <p class="contact-card-text">Lunes a Sábado<br>9:00 AM — 7:00 PM</p>
+                </div>
+
+                <!-- Tarjeta: Redes Sociales -->
+                <div class="contact-card contact-card-social">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="contact-card-title">Síguenos</h3>
+                    <!-- ═══════════════════════════════════════════
+                         REDES SOCIALES — Edita cada href="" con tu enlace
+                         Para agregar una red, copia un <a> y cambia el SVG
+                    ═══════════════════════════════════════════ -->
+                    <div class="social-links">
+                        <!-- INSTAGRAM — Cambia el href -->
+                        <a href="https://instagram.com/tu_salon" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <!-- TIKTOK — Cambia el href -->
+                        <a href="https://tiktok.com/@tu_salon" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.94a8.27 8.27 0 0 0 4.76 1.5V7a4.83 4.83 0 0 1-1-.31z"/>
+                            </svg>
+                        </a>
+                        <!-- FACEBOOK — Cambia el href -->
+                        <a href="https://facebook.com/tu_salon" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <!-- WHATSAPP — Cambia el href (número) -->
+                        <a href="https://wa.me/573001234567" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div> <!-- /contact-grid -->
+        </div>
+    </section>
+
+    <!-- ============================================================
+         6. FOOTER
+         ─────────────────────────────────────────────────────────────
+         • Cambia el nombre del salón y el año de copyright
+         • Los enlaces de redes se replican del contacto
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#inicio" class="footer-logo">
+                        <span class="logo-icon">✦</span>
+                        <span class="logo-text">Glamour Nails</span>
+                        <span class="logo-sub">Studio</span>
+                    </a>
+                    <p class="footer-tagline">Elegancia en cada detalle</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#galeria">Galería</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+
+                <!-- Redes sociales del footer — Mismos enlaces que la sección de contacto -->
+                <div class="footer-social">
+                    <a href="https://instagram.com/tu_salon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@tu_salon" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.94a8.27 8.27 0 0 0 4.76 1.5V7a4.83 4.83 0 0 1-1-.31z"/>
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com/tu_salon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <!-- COPYRIGHT — Cambia el nombre y el año -->
+                <p>&copy; 2026 Glamour Nails Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         7. BOTÓN FLOTANTE DE WHATSAPP
+         ─────────────────────────────────────────────────────────────
+         • El número de WhatsApp se configura en script.js
+           (busca WHATSAPP_NUMBER)
+         • El mensaje predeterminado también se configura en script.js
+    ============================================================ -->
+    <a href="#" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener noreferrer" aria-label="Chatea por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-tooltip">¡Agenda tu cita!</span>
+    </a>
+
+    <!-- JavaScript principal -->
+    <script src="script.js"></script>
+</body>
+</html>
